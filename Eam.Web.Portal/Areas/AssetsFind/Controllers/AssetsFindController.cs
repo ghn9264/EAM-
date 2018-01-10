@@ -267,9 +267,14 @@ namespace Eam.Web.Portal.Areas.AssetsFind.Controllers
                 //    }
                 //}
             }
-
-            var result = _assetsService.QueryPage1(model);
-            return Json(result);
+            PagedList<AssetsMain> resultmain = _assetsService.QueryPage(model);
+            decimal DeptPrice = _assetsService.QueryDeptPrice(model);
+            Dictionary<string, object> dict = new Dictionary<string, object>()
+                {
+                    {"Items",resultmain},
+                    {"DeptPrice",DeptPrice}
+                };
+            return Json(dict);
         }
 
         //逻辑删除资产
@@ -855,8 +860,8 @@ namespace Eam.Web.Portal.Areas.AssetsFind.Controllers
             int codeX = 0;
             int codeY = 0;
             int fontSize = 0;
-            string lableName="";
-            string lableContact="";
+            string lableName = "";
+            string lableContact = "";
             if (Request.Cookies["printset"] == null)
             {
                 settings = "assetname-assetcode-brandtype-storeplace-user";
@@ -926,7 +931,7 @@ namespace Eam.Web.Portal.Areas.AssetsFind.Controllers
                     }
                     var fileName = string.Format("{0}.jpg", item.AssetsNum);
 
-                    QrCode.QrCodeBuilder.Build(info, Path.Combine(PortalSetting.QrCodesPath, fileName), settings, titleX, titleY, codeX, codeY,fontSize, lableName,lableContact);
+                    QrCode.QrCodeBuilder.Build(info, Path.Combine(PortalSetting.QrCodesPath, fileName), settings, titleX, titleY, codeX, codeY, fontSize, lableName, lableContact);
                     var httpPath = string.Format("{0}://{1}{2}{3}",
                         HttpContext.Request.Url.Scheme,
                         HttpContext.Request.Url.Authority,
@@ -957,8 +962,8 @@ namespace Eam.Web.Portal.Areas.AssetsFind.Controllers
             int codeX = 0;
             int codeY = 0;
             int fontSize = 0;
-            string lableName="";
-            string lableContact="";
+            string lableName = "";
+            string lableContact = "";
             QrprintSetting qrset = new QrprintSetting();
             qrset = _qrprintSettingService.getqrset();
             if (qrset.Printset.Equals("empty"))
@@ -1072,7 +1077,7 @@ namespace Eam.Web.Portal.Areas.AssetsFind.Controllers
                     //
                     // 生成整个条码
                     //
-                    QrCode.QrCodeBuilder.Build(info, Path.Combine(PortalSetting.QrCodesPath, fileName), settings, titleX, titleY, codeX, codeY,fontSize, lableName, lableContact);
+                    QrCode.QrCodeBuilder.Build(info, Path.Combine(PortalSetting.QrCodesPath, fileName), settings, titleX, titleY, codeX, codeY, fontSize, lableName, lableContact);
                     var httpPath = string.Format("{0}://{1}{2}{3}",
                         HttpContext.Request.Url.Scheme,
                         HttpContext.Request.Url.Authority,
@@ -1105,7 +1110,7 @@ namespace Eam.Web.Portal.Areas.AssetsFind.Controllers
         public ActionResult QrPrintSetting()
         {
             QrprintSetting qrset = new QrprintSetting();
-            qrset =_qrprintSettingService.getqrset();
+            qrset = _qrprintSettingService.getqrset();
             PrintModel prm = new PrintModel();
             prm.LableContact = qrset.LableContact;
             prm.LableName = qrset.LableName;
@@ -1146,7 +1151,7 @@ namespace Eam.Web.Portal.Areas.AssetsFind.Controllers
 
                 throw;
             }
-           
+
             return View();
         }
 

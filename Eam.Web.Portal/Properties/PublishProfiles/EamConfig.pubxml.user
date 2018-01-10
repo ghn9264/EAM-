@@ -40,7 +40,7 @@
       <publishTime>07/13/2017 10:13:42</publishTime>
     </File>
     <File Include="Areas/AssetsFind/Views/AssetsFind/_AssetsFindLayout.cshtml">
-      <publishTime>12/12/2017 16:08:10</publishTime>
+      <publishTime>01/10/2018 20:21:48</publishTime>
     </File>
     <File Include="Areas/AssetsFind/Views/AssetsMaintain/AcquireMaintian.cshtml">
       <publishTime>08/08/2017 11:08:48</publishTime>
@@ -181,7 +181,7 @@
       <publishTime>07/13/2017 10:13:42</publishTime>
     </File>
     <File Include="Areas/SysManage/Views/SysManage/EditUser.cshtml">
-      <publishTime>08/14/2017 14:13:10</publishTime>
+      <publishTime>01/10/2018 22:51:40</publishTime>
     </File>
     <File Include="Areas/SysManage/Views/SysManage/Index.cshtml">
       <publishTime>07/13/2017 10:13:42</publishTime>
@@ -196,7 +196,7 @@
       <publishTime>07/13/2017 10:13:42</publishTime>
     </File>
     <File Include="Areas/SysManage/Views/SysManage/UserAndDepartmenManage.cshtml">
-      <publishTime>12/04/2017 11:22:10</publishTime>
+      <publishTime>01/10/2018 22:48:31</publishTime>
     </File>
     <File Include="Areas/SysManage/Views/web.config">
       <publishTime>07/13/2017 10:13:42</publishTime>
@@ -6283,19 +6283,19 @@
       <publishTime>01/09/2018 13:36:31</publishTime>
     </File>
     <File Include="bin/EAM.Data.Comm.dll">
-      <publishTime>01/09/2018 13:36:31</publishTime>
+      <publishTime>01/11/2018 00:10:00</publishTime>
     </File>
     <File Include="bin/EAM.Data.Domain.dll">
-      <publishTime>01/09/2018 13:36:32</publishTime>
+      <publishTime>01/11/2018 00:10:00</publishTime>
     </File>
     <File Include="bin/EAM.Data.ImportAndExport.dll">
-      <publishTime>01/09/2018 13:36:32</publishTime>
+      <publishTime>01/11/2018 00:10:00</publishTime>
     </File>
     <File Include="bin/EAM.Data.Repositories.dll">
-      <publishTime>01/09/2018 13:36:32</publishTime>
+      <publishTime>01/11/2018 00:10:00</publishTime>
     </File>
     <File Include="bin/EAM.Data.Services.dll">
-      <publishTime>01/09/2018 13:36:32</publishTime>
+      <publishTime>01/11/2018 00:10:00</publishTime>
     </File>
     <File Include="bin/EAM.Inventory.dll">
       <publishTime>01/09/2018 13:36:31</publishTime>
@@ -6304,7 +6304,7 @@
       <publishTime>01/09/2018 13:36:31</publishTime>
     </File>
     <File Include="bin/Eam.Web.Portal.dll">
-      <publishTime>01/09/2018 13:36:33</publishTime>
+      <publishTime>01/11/2018 00:10:01</publishTime>
     </File>
     <File Include="bin/ICSharpCode.SharpZipLib.dll">
       <publishTime>07/13/2017 10:13:12</publishTime>

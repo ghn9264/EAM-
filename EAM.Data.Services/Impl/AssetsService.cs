@@ -44,6 +44,7 @@ namespace EAM.Data.Services.Impl
         private readonly IOrderListRepository _orderListRep;
         private readonly IInventoryRepository _inventoryRep;
         private readonly IInventoryDetailRepository _inventoryDetailRep;
+        private readonly IServiceDetailRepository _IServiceDetailRep;
 
         #endregion
 
@@ -74,7 +75,8 @@ namespace EAM.Data.Services.Impl
             IScrapApplyDetailRepository srScrapApplyDetailRep,
             IOrderListRepository orderListRep,
             IInventoryRepository inventoryRep,
-            IInventoryDetailRepository inventoryDetailRep
+            IInventoryDetailRepository inventoryDetailRep,
+            IServiceDetailRepository IServiceDetailRep
             )
         {
             _assetsMainRep = assetsMainRep;
@@ -104,6 +106,7 @@ namespace EAM.Data.Services.Impl
             _orderListRep = orderListRep;
             _inventoryRep = inventoryRep;
             _inventoryDetailRep = inventoryDetailRep;
+            _IServiceDetailRep = IServiceDetailRep;
         }
         #endregion
 
@@ -473,7 +476,8 @@ namespace EAM.Data.Services.Impl
         {
             return _assetsMainRep.Remove(entityId);
         }
-        public int DeleteByimportId(int importid) {
+        public int DeleteByimportId(int importid)
+        {
             return _assetsMainRep.Execute(new Sql("delete from assets_main where import_id = '" + importid + "'"));
         }
         public List<AssetsMain> Get(List<string> assetsNums)
@@ -618,7 +622,8 @@ namespace EAM.Data.Services.Impl
         public PagedList<AssetsMain> QueryPage(AssetsQuery query)
         {
             return _assetsMainRep.PagedList(query.PageIndex, query.PageSize, query.QuerySql);
-        }public PagedList<AssetsMain> QueryPage1(AssetsQuery query)
+        }
+        public PagedList<AssetsMain> QueryPage1(AssetsQuery query)
         {
             return _assetsMainRep.PagedList1(query.PageIndex, query.PageSize, query.QuerySql);
         }
@@ -630,6 +635,12 @@ namespace EAM.Data.Services.Impl
         public List<AssetsMain> QueryAsstesList(AssetsQuery query)
         {
             return _assetsMainRep.Query(query.QuerySql);
+        }
+        public decimal QueryDeptPrice(AssetsQuery query)
+        {
+            var sql = query.QueryMoney;
+
+            return _IServiceDetailRep.ExecuteScalar(sql);
         }
 
         /// <summary>

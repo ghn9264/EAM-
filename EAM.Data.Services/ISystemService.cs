@@ -11,7 +11,7 @@ namespace EAM.Data.Services
         void Update(Department dept);
         void Delete(int deptId);
         List<Department> GetAll();
-
+        decimal GetDeptByName(string deptname);
         #endregion
 
         #region 位置管理

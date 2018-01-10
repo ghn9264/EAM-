@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using EAM.Data.Domain;
 using EAM.Data.Repositories;
 
@@ -36,7 +37,10 @@ namespace EAM.Data.Services.Impl
         {
             return _deptRep.Query("SELECT d.*,p.DEPT_NAME as PARENT_NAME from department d left JOIN department p on d.PARENT_ID=p.ID");
         }
-
+        public decimal GetDeptByName(string deptname)
+        {
+            return _deptRep.ExecuteScalar(new NPoco.Sql("select ID from department where DEPT_NAME = '"+ deptname + "'"));
+        }
         #endregion
 
         #region Place
@@ -67,6 +71,8 @@ namespace EAM.Data.Services.Impl
             var sql = "SELECT p.*,pp.`PLACE_CODE` AS PARENT_PLACE_CODE,pp.`PLACE_NAME` AS PARENT_PLACE_NAME FROM `place` p LEFT JOIN `place` pp ON p.PARENT_ID=pp.ID WHERE p.PLACE_TYPE=@0";
             return _placeRep.Query(sql, placeType);
         }
+
+
         #endregion
 
     }

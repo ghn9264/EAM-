@@ -85,7 +85,8 @@ namespace Eam.Web.Portal.Areas.Account.Controllers
                     while (!date.Contains(yearcount.ToString()))
                     {
                         yearcount--;
-                        if (yearcount == 1900) {
+                        if (yearcount == 1900)
+                        {
                             break;
                         }
                     };
@@ -94,7 +95,8 @@ namespace Eam.Web.Portal.Areas.Account.Controllers
                     {
                         if (!tempkey.Equals(date))
                         {
-                            if (count < 11) {
+                            if (count < 11)
+                            {
                                 echarsKey = "'" + item.PostingDate.ToString("yyyy/MM") + "', " + echarsKey;
                                 echarsValue = totalcount.ToString() + "," + echarsValue;
                             }
@@ -107,9 +109,9 @@ namespace Eam.Web.Portal.Areas.Account.Controllers
                         {
                             totalcount += item.Counts;
                         }
-                        
+
                     }
-                    
+
                     //echarsKey = "'" + item.PostingDate.ToString("yyyy/MM") + "', " + echarsKey;
                     //echarsValue = item.Counts.ToString() + "," + echarsValue;
                     //if (maxNum < item.Counts) { maxNum = item.Counts; }
@@ -125,6 +127,7 @@ namespace Eam.Web.Portal.Areas.Account.Controllers
             ViewBag.maxNum = maxNum;//柱状图y最大值
 
             ViewBag.interval = maxNum / 5;
+            ViewBag.role = Session["power"];
 
             return View(model);
         }
