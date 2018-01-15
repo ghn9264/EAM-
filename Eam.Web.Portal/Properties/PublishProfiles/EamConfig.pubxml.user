@@ -67,7 +67,7 @@
       <publishTime>12/27/2017 11:01:41</publishTime>
     </File>
     <File Include="Areas/AssetsFind/Views/DoAssets/InventoryPlanAssets.cshtml">
-      <publishTime>12/27/2017 11:30:18</publishTime>
+      <publishTime>01/11/2018 12:09:50</publishTime>
     </File>
     <File Include="Areas/AssetsFind/Views/DoAssets/QueryAssets.cshtml">
       <publishTime>01/09/2018 13:36:10</publishTime>
@@ -7087,7 +7087,7 @@
       <publishTime>07/13/2017 10:13:42</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/27/2017 18:24:46</publishTime>
+      <publishTime>01/15/2018 11:00:38</publishTime>
     </File>
   </ItemGroup>
 </Project>
