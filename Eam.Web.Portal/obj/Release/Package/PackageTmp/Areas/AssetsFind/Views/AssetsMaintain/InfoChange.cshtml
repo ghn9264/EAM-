@@ -56,11 +56,10 @@
                                         <th style="width: 6%;">存放地点</th>
                                         <th style="width: 6%;">使用部门</th>
                                         <th style="width: 6%;">打印状态</th>
-
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
-                            </table><button type="button" class="btn btn-default btn-all print" id="printAll">打印</button>
+                            </table><button hidden id="printAll">打印</button>
                         </div>
                     </form>
                 </div>
@@ -157,7 +156,7 @@
                 }
             });
             //
-            // 移除单条资产
+            // 移除资产
             //
             $("#btnRemoveAll").click(function () {
                 var test = $("input[name='checkbox']:checked");
@@ -165,16 +164,18 @@
                 test.each(function () {
                     checkBoxValue += $(this).attr("data-id") + "|";
                 });
-                if (checkBoxValue.length < 1) { alert("请选择"); } else {
-                    var serviceUrlRemove = "@Url.Action("RemoveOne", "OrderList", new {area = "Account"})";
-                    $.post(serviceUrlRemove, { "id": checkBoxValue }, function () {
-                        loadData();
-                    });
+                if (confirm("是否确定从操作列表中移除所选条目？")) {
+                    if (checkBoxValue.length < 1) { alert("请选择"); } else {
+                        var serviceUrlRemove = "@Url.Action("RemoveOne", "OrderList", new {area = "Account"})";
+                        $.post(serviceUrlRemove, { "id": checkBoxValue }, function () {
+                            loadData();
+                        });
+                    }
                 }
             });
 
             //
-            // 删除单条资产
+            // 删除资产
             //
             $("#btnDeleteAll").click(function () {
 
@@ -192,9 +193,10 @@
                     CatCode += $(this).attr("CatCode-id") + "|";
 
                 });
-                if (checkBoxValue.length < 1) { alert("请选择"); } else {
-                    //alert(checkBoxValue);
-                    var deleteOneUrl = "@Url.Action("LogicRemoveOneEx", "AssetsFind", new { area = "AssetsFind" })";
+                if (confirm("是否确定删除所选条目？")) {
+                    if (checkBoxValue.length < 1) { alert("请选择"); } else {
+                        //alert(checkBoxValue);
+                        var deleteOneUrl = "@Url.Action("LogicRemoveOneEx", "AssetsFind", new { area = "AssetsFind" })";
                     @*var serviceUrlRemove = "@Url.Action("RemoveOne", "OrderList", new {area = "Account"})";*@
                     $.post(deleteOneUrl, { "entityId": MainId, "catCode": CatCode, "orderListId": checkBoxValue }, function () {
 
@@ -203,6 +205,7 @@
                         //
                         loadData();
                     });
+                    }
                 }
             });
 

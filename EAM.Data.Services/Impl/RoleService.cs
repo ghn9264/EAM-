@@ -69,9 +69,9 @@ namespace EAM.Data.Services.Impl
             userInfo.Permissions = item.Permissions;
             _userInfoRep.Update(userInfo);
         }
-        public decimal GetIDByRole(string roles) {
-            return _roleRep.ExecuteScalar(new NPoco.Sql("SELECT ID FROM role WHERE role ='" + roles + "'"));
-        }
+        //public decimal GetIDByRole(string roles) {
+        //    return _roleRep.ExecuteScalar(new NPoco.Sql("SELECT ID FROM role WHERE role ='" + roles + "'"));
+        //}
         /// <summary>
         /// 删除
         /// </summary>

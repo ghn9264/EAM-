@@ -263,8 +263,10 @@ namespace Eam.Web.Portal.Areas.SysManage.Controllers
                     Roles = Roles,
                     Permissions = Permissions,
                 };
-                decimal roleid = _roleService.GetIDByRole(Roles);
-                role.EntityId = Convert.ToInt32(roleid);
+                Role oldrole = _roleService.GetRole(Roles);
+
+                role.EntityId = Convert.ToInt32(oldrole.EntityId);
+                _userService.UpdateRole(oldrole.Roles, Permissions);
                 if (_roleService.ifexitRole(role.EntityId)>0)
                 {
                     _roleService.UpdateRole(role);

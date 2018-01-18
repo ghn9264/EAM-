@@ -3,6 +3,7 @@ using System.Linq;
 using EAM.Data.Comm;
 using EAM.Data.Domain;
 using NPoco;
+using System.Collections;
 
 namespace EAM.Data.Repositories.Impl
 {
@@ -31,8 +32,19 @@ namespace EAM.Data.Repositories.Impl
         }
         public List<OrderList> QueryByChange(string type)
         {
-            var sql = Sql.Builder.Where("ID in (@0)", type);
-            return Query(sql).ToList();
+            var sql = new Sql();
+            string[] strSo = type.Split(',');
+            ArrayList arraytypes = new ArrayList();
+            for (int i = 0; i < strSo.Length; i++)
+            {
+                if (!strSo[i].Equals(""))
+                {
+                    int idOne = int.Parse(strSo[i]);
+                    arraytypes.Add(idOne);
+                }
+            }
+            sql = Sql.Builder.Where("ID in (@0)", arraytypes);
+            return Query(sql).ToList<OrderList>();
         }
         public int UpdateIsPrinted(string assetsNums)
         {

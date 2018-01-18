@@ -244,7 +244,8 @@ namespace EAM.Data.ImportAndExport.Import
                     }
                     if (data.Columns.Contains(Mappings.DtAssetsMapping["Memo"]))
                     {
-                        assetsMain.Memo = Convert.ToString(row[Mappings.DtAssetsMapping["Memo"]]);
+                        //assetsMain.Memo = Convert.ToString(row[Mappings.DtAssetsMapping["Memo"]]);
+                        assetsMain.Memo = null;
                     }
                     /*assetsMain.Brand=*/
 

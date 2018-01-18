@@ -29,8 +29,8 @@ namespace EAM.Data.Repositories.Impl
         /// <returns></returns>
         public int UpdateRole(string Role, string Permissions)
         {
-            var sql = "UPDATE user_info SET PERMISSIONS=@0 WHERE ROLE=@1";
-            return Db.Execute(sql, Permissions, Role);
+            var sql = "UPDATE user_info SET PERMISSIONS='"+ Permissions + "' WHERE ROLE='"+ Role + "'";
+            return Db.Execute(sql);
         }
 
     }
